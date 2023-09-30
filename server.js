@@ -25,6 +25,11 @@ app.get('/admin', (req, res) => {
   res.send('Admin Homepage')
 })
 
+//http://localhost:3000/privacy
+app.get('/privacy', (req, res) => {
+  res.send('Privacy Page')
+})
+
 //http://localhost:3000/user/100
 app.get("/user/:id", (req, res)=> {
       res.send(`User ID: ${req.params.id}`);
