@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, 'views')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function (req, res) {
-  const htmlFilePath = path.join(__dirname,'public', 'index.html'); // Specify the absolute path to your HTML file
+  const htmlFilePath = path.join(__dirname,'public', 'index.html'); // Specify the absolute path to HTML file
   res.sendFile(htmlFilePath); // Send the HTML file
 });
 
