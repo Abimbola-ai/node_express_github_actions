@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Node Site</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <main>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="user.html">User</a></li> 
+                <li><a href="timeofday.html">Time Of Day</a></li> 
+                <li><a href="contact-me.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div>
+            <h1>User ID Display</h1>
+            <form id="userIdForm">
+                <label for="userId">Enter User ID: </label>
+                <input type="text" id="userId" name="userId">
+                <input type="submit" value="Submit">
+            </form>
+            <div id="userIdDisplay"></div>
+        </div>
+
+  
+
+  <script>
+    // JavaScript code to capture the user input and display it
+    document.getElementById("userIdForm").addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent form submission
+      const userId = document.getElementById("userId").value;
+      document.getElementById("userIdDisplay").innerHTML = `Your User ID is: ${userId}`;
+    });
+  </script>
+</body>
+</html>

@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 
+
 const path = require('path'); // Import the path module
 
 const SERVER_PORT = 3000;
@@ -12,16 +13,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'views')));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.get('/', function (req, res) {
   const htmlFilePath = path.join(__dirname,'public', 'index.html'); // Specify the absolute path to HTML file
   res.sendFile(htmlFilePath); // Send the HTML file
 });
 
 
-app.post('/profile', (req, res) => {
-  console.log(req.body);
-  res.json(req.body);
-});
 
 app.get('/about', (req, res) => {
   const htmlFilePath = path.join(__dirname,'public', 'about.html'); 
@@ -33,14 +31,36 @@ app.get('/contact-me', (req, res) => {
   res.sendFile(htmlFilePath);
 });
 
-app.get("/user/:id", (req, res) => {
-  res.send(`User ID: ${req.params.id}`);
+
+app.get("/user", (req, res) => {
+  res.sendFile(__dirname + "/user.html");
 });
 
-app.get("/valueofday/:year(\\d{4})-:month(\\d{2})-:day(\\d{2})", (req, res) => {
-  console.log(req.params);
-  res.send(req.params);
+app.get("/valueofday", (req, res) => {
+  const currentDate = new Date(); // Get the current date and time
+  const year = currentDate.getFullYear();
+  const month = String(currentDate.getMonth() + 1).padStart(2, "0"); // Month is zero-based, so add 1
+  const day = String(currentDate.getDate()).padStart(2, "0");
+  const hours = String(currentDate.getHours()).padStart(2, "0");
+  const minutes = String(currentDate.getMinutes()).padStart(2, "0");
+  const seconds = String(currentDate.getSeconds()).padStart(2, "0");
+
+  // Create an object with the properties
+  const dateTimeData = {
+    year,
+    month,
+    day,
+    hours,
+    minutes,
+    seconds
+  };
+
+  // Send the JSON data as the response
+  res.json(dateTimeData);
 });
+
+
+
 
 app.listen(process.env.PORT || SERVER_PORT, () => {
     console.log(`Server running at http://${SERVER_HOST}:${SERVER_PORT}/`);

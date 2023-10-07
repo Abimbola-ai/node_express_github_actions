@@ -40,3 +40,16 @@ nav a {
 nav a:hover {
     color: #ff6600;
 }
+
+nav {
+    margin-bottom:30px;
+}
+
+img {
+    margin: 0px auto;
+}
+
+form {
+    margin-top: 20px;
+}
+
